@@ -55,8 +55,8 @@ if s:moria_style == "dark"
         hi SpellLocal guisp=#2ceeee gui=undercurl
         hi SpellRare guisp=#ee2cee gui=undercurl
     endif
-    hi StatusLine ctermbg=7 ctermfg=0 guibg=#485868 guifg=fg gui=bold
-    hi StatusLineNC ctermbg=8 ctermfg=0 guibg=#304050 guifg=fg gui=none
+    "hi StatusLine ctermbg=7 ctermfg=0 guibg=#485868 guifg=fg gui=bold
+    "hi StatusLineNC ctermbg=8 ctermfg=0 guibg=#304050 guifg=fg gui=none
     hi TabLine guibg=#566676 guifg=fg gui=underline
     hi TabLineFill guibg=#c0d0e0 guifg=bg gui=none
     hi TabLineSel guibg=bg guifg=fg gui=bold
