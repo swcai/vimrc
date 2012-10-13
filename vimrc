@@ -34,7 +34,7 @@ filetype plugin on    " Enable filetype-specific plugins
 " auto reload vimrc when editing it
 autocmd! bufwritepost .vimrc source ~/.vimrc
 
-
+set term=builtin_ansi   " This line is required by macOS
 syntax on		" syntax highlight
 set hlsearch		" search highlighting
 
