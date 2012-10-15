@@ -43,11 +43,11 @@ if has("gui_running")	" GUI color and font settings
   set background=dark 
   set t_Co=256          " 256 color mode
   set cursorline        " highlight current line
-  colors moria
+  colors koehler
   highlight CursorLine          guibg=#003853 ctermbg=24  gui=none cterm=none
 else
 " terminal color settings
-  colorscheme moria
+  colors koehler
   set background=dark
 endif
 
