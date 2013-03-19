@@ -14,6 +14,7 @@ endif
 
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
+call pathogen#infect()
 
 " General Settings
 
@@ -39,16 +40,17 @@ syntax on		" syntax highlight
 set hlsearch		" search highlighting
 
 if has("gui_running")	" GUI color and font settings
-  "set guifont=Osaka-Mono:h20
-  set background=dark 
-  set t_Co=256          " 256 color mode
+  set background=light
   set cursorline        " highlight current line
   colors koehler
+  "set guifont=Consolas\ for\ Powerline\ 12
+  "set guifont=Anonymous\ Pro\ for\ Powerline\ 12
+  set guifont=PragmataPro\ for\ Powerline\ 12
   highlight CursorLine          guibg=#003853 ctermbg=24  gui=none cterm=none
 else
 " terminal color settings
-  colors koehler
   set background=dark
+  colors koehler
 endif
 
 set clipboard=unnamed	" yank to the system register (*) by default
@@ -76,8 +78,8 @@ set tm=500
 
 " TAB setting{
    set expandtab        "replace <TAB> with spaces
-   set softtabstop=3 
-   set shiftwidth=3 
+   set softtabstop=2 
+   set shiftwidth=2 
 
    au FileType Makefile set noexpandtab
 "}      							
@@ -156,6 +158,8 @@ map <C-K> <C-W>k<C-W>_
 nmap <c-h> <c-w>h<c-w><bar>
 " move to and maximize the right split  
 nmap <c-l> <c-w>l<c-w><bar>
+" make all windows equal
+nmap <c-q> <c-w>=
 set wmw=0                     " set the min width of a window to 0 so we can maximize others 
 set wmh=0                     " set the min height of a window to 0 so we can maximize others
 " }
@@ -228,23 +232,23 @@ endfun
 
 
 " Enable omni completion. (Ctrl-X Ctrl-O)
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType c set omnifunc=ccomplete#Complete
-autocmd FileType java set omnifunc=javacomplete#Complete
+"autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+"autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+"autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+"autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+"autocmd FileType c set omnifunc=ccomplete#Complete
+"autocmd FileType java set omnifunc=javacomplete#Complete
 
 " use syntax complete if nothing else available
-if has("autocmd") && exists("+omnifunc")
-  autocmd Filetype *
-              \	if &omnifunc == "" |
-              \		setlocal omnifunc=syntaxcomplete#Complete |
-              \	endif
-endif
-
-set cot-=preview "disable doc preview in omnicomplete
+"if has("autocmd") && exists("+omnifunc")
+"  autocmd Filetype *
+"              \	if &omnifunc == "" |
+"              \		setlocal omnifunc=syntaxcomplete#Complete |
+"              \	endif
+"endif
+"
+" set cot-=preview "disable doc preview in omnicomplete
 
 " make CSS omnicompletion work for SASS and SCSS
 autocmd BufNewFile,BufRead *.scss             set ft=scss.css
@@ -341,7 +345,19 @@ let g:tagbar_compact = 1
 
 " --- PowerLine
 " let g:Powerline_symbols = 'fancy' " require fontpatcher
-"
+python from powerline.ext.vim import source_plugin; source_plugin()
 
 " --- SnipMate
 let g:snipMateAllowMatchingDot = 0
+
+" -- hardcoded for CoffeeScript
+" au BufRead,BufNewFile *.coffee set ft=coffee
+
+" NERDTree
+map <c-t> :NERDTree<CR>
+
+" ConqueTerm
+map <c-b> :ConqueTermSplit bash<CR>
+
+" yankring setting
+let g:yankring_history_dir = "$HOME/.vim/"
